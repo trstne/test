@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>*& ._> -}____| { { i . i }} ☺︎</title>
+    <link rel="shortcut icon" type="image/jpg" href="favicon-16x16.png"/>
+  </head>
+  <body>
+  <a id="ifeellike" href="/friends.html">♥ friends ♥︎</a>
+  <p id="output"></p>
+  <p id="counter"></p>
+  </body>
+</html>
+
+<style>
+  p{
+    margin: 0;
+  }
+  body{
+    padding: 0;
+    margin: 0; 
+    height: 100%; 
+    overflow: hidden;
+    background: #222;
+    color: #e1e1e1;
+    max-height: 100vh;
+    font-size: 10vh;
+    place-items: center;
+    display: grid; 
+    grid-template-columns: 5fr 1fr; 
+    grid-template-rows: 1fr; 
+    grid-column-gap: 0px;
+    grid-row-gap: 0px; 
+  }
+  #ifeellike{
+    font-size: .5em;
+    color: #222222;
+    position: absolute;
+    bottom: 10px
+    left: 10px;
+    z-index: 3;
+  }
+  #output{
+    max-height: 100vh;
+    max-width: 80vw;
+    display: grid;
+    place-items: center;
+    grid-area: 1 / 1 / 2 / 2;
+  }
+  #counter{
+    margin: 0;
+    border-left: solid white 1px;
+    padding-left: 3px;
+    max-height: 100vh;
+    grid-area: 1 / 2 / 2 / 3;
+    font-size: .1em;
+    width:100%;
+    word-break: break-all;
+    overflow: hidden;
+    background: #333;
+  }
+  
+  @media (max-aspect-ratio: 1/1) {
+    #moblie { display: block; }
+    body {
+      transition: all 1s;
+      grid-template-columns: 1fr; 
+      grid-template-rows: 5fr 1fr; 
+    }
+    #output{
+      max-height: 80vh;
+      max-width: 100vw;
+      grid-area: 1 / 1 / 2 / 2; 
+    }
+    #counter{
+      border-left: solid transparent 0px;
+      border-top: solid white 1px;
+      padding-left: 0px;
+      padding-top: 3px;
+      height: 100%;
+      max-width: 100vw;
+      grid-area: 2 / 1 / 3 / 2;
+    }
+  }
+</style>
+
+<script>
+    // to inspect element and read the text of this array outside of its context breaks all the romance of the initial form
+  let feelings = [
+  "*& ._> -}____| { { i . i }} ☺",
+  "i don't know how to read.",
+  "my parents met on aol.",
+  "my pet turtle's name is skippy. <br> he is 14 years old.",
+  "i'm currently reading <b>a book.</b>",
+  "i'm sleepy.",
+  "bike lanes please.",
+  "i'm living in new haven, connecticut!!!",
+  "<b style='color:red; background: green; font: \"Comic Sans MS\"'>this is more like it. i'm tired of this minimalist 'oh look at me, i have a nice and tasteful selection of monochrome color scheme and standard readable font selection' type beat. FUCK THAT. mf i'd be talking in wingdings if yall would get on my level.</b>",
+  "everything everywhere all at once is a good movie <br> 😡 watch it coward. 😡",
+  "online diaries are fun.",
+  "i wrote this in like 3 hours.",
+  "tomtris.tumblr.com",
+  "⠁⠞⠀⠞⠓⠑⠀⠑⠝⠙⠀⠕⠋⠀⠓⠊⠛⠓⠀⠎⠉⠓⠕⠕⠇⠀⠊⠀⠓⠁⠙⠀⠁⠀⠗⠑⠁⠇⠀⠃⠊⠛⠀⠐⠥⠝⠊⠉⠕⠙⠑⠀⠃⠗⠁⠊⠇⠇⠑⠐⠀⠏⠓⠁⠎⠑",
+  "YUCK!",
+  "discord: trstne#0001",
+  "<a href='mailto:tristen.lawrence@yale.edu'>email me!</a>",
+  "#######################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################",
+  "My name is Tristen and My name is Tristen and My name is Tristen and My name is Tristen and My name is Tristen and My name is Tristen and My name is Tristen and",
+  "write Vue components for $$$",
+  "i make content for bullies",
+  "I am VEGAN.",
+  "😀 😃 😄 😁 😆 🤩 😅 😂 🤣 ☺️ 😊 😇 🙂 🙃 😉 😌 😍 😘 😗 😙 😚 😋 🤪 😜 😝 😛 🤑 🤗 🤓 😎 🤡 🤠 😏 😒 😞 😔 😟 😕 🙁 ☹️ 😣 😖 😫 😩 😤 😠 😡 🤬 😶 😐 😑 😯 😦 😧 😮 😲 😵 🤯 😳 😱 😨 😰 😢 😥 🤤 😭 😓 😪 😴 🥱 🙄 🤨 🧐 🤔 🤫 🤭 🤥 😬 🤐 🤢 🤮 🤧 😷 🤒 🤕",
+  "⏈",
+  "<strike>gonna eat all-you-can-eat-sushi-tonight :)</strike> ate the sushi already...",
+  "(╯°□°)╯︵ ┻━┻",
+  "this is cliché.",
+  "i used to live in texas. don't ask i hated it.",
+  "i was an undead monk in world of warcraft.",
+  "i wear socks to bed.",
+  "i can't be bothered to do laundry right now.",
+  "i still love most of the people i've ever loved.",
+  "some of my friends are <strike>fake</strike>.",
+  "i talk too much about my hair.",
+  "why does this page have 500+ views 😳.",
+  "parappa the rappa will never answer for his war crimes.",
+  "loading...",
+  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+  "🚨 gamer alert 🚨",
+  "garde le pour toi.",
+  "it is the same with people. I see in them little details so specific to each of them that move me, that I miss and will always miss. You can never replace anyone because everyone is made of such beautiful specific details.",
+  "i don't know where home is.",
+  "you can move your mouse to change the text on this page! neat right?",
+  "open the developer console!",
+  "<button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button><button>submit</button>",
+  "<span style='height: 50vh; width: 50vw; background-color: #f2f; border-radius: 50%; display: inline-block;'>wow</span>",
+  "i wrote you a poem! it goes: 'Please upgrade your browser! You are using Internet Explorer 6 (IE6) or older! In order to view the site you must upgrade to a newer browser. SP Production have decided to stop supporting IE6 because: It's 9 year old and have huge amount of critical security problems. It does not support modern webstandards. Companies like Facebook and Google and its YouTube have stopped supporting it. Even Microsoft want a stop to it. Here is a list of modern browsers we recommend: (Minimum requered OS) Firefox 8.0 - 2011-11-08 (Windows 2000, OS X 10.5, Linux*) Chrome 15.0.874.120 - 2011-11-10 (Windows XP sp2, OS X 10.5.6, Linux*) Safari 5.1.1 - 2011-10-12 (Windows XP, OS X 10.6.8) Internet Explorer 9 - 2011-03-14 (Windows Vista) Opera 11.52 - 2011-10-19 (Windows XP, OS X 10.5) Opera 10.63 - 2010-10-12 (Use only for Windows 98)'.",
+  "so much depends upon a red wheel barrow glazed with rain water beside the white chickens.",
+  "online communities are often worse then the real-life proxies they replace.",
+  "climb into the cistern. into that hidden rhythm. everything's beginning, bidden or no. that inner voice saying: 'be brave. don't go missing. don't be your own prison.' let go your mind, it's here and present. will you find resonance? will you relent? will you give-in? will you let the embers of your blinded, wounded ego die? as you writhe-cum-slither commit to climb out of the system and into the cistern.",
+  "recreate the syntax and measure of poor human prose and stand before you speechless and intelligent and shaking with shame, rejected yet confessing out the soul to conform to the rhythm of thought in his naked and endless head...",
+  "<img src='bait.jpg'></img>",
+  "it's epilepsy awareness month!",
+  "who owns this land? there is a green mark on it. mi casa es su casa... says the man who stole your land. mi casa es su casa... says the man who sold your land.",
+  "blood is thicker than water. oil is thicker than blood. water's quicker than both, and when you are hit with a flood you'll get caught in the mud."
+  ];
+  
+  // yeah alright ok 😔
+
+  
+  function randomNumber(min, max) { 
+    return Math.random() * (max - min) + min;
+  }
+  
+  let interval = false;
+  
+  function largeRandomString(n = 1000){
+    if(window.matchMedia('(max-aspect-ratio: 1/1)').matches){
+      n = 250
+    }
+    let string = ''
+    for (let i = 0; i < n; i++){
+      string += Math.random().toString(36).substring(2)
+    }
+    return string;
+  }
+  
+  function randomFont() {
+    fontArray = ['Helvetica', 'Arial', 'Verdana', 'Tahoma', 'Trebuchet MS', 'Impact', "Gill Sans", "Times New Roman", "Georgia", "Palatino", "Baskerville", "Andalé Mono", "Courier", "Lucida", "Monaco", "Bradley Hand", "Brush Script MT", "Luminari", "Comic Sans MS"
+      ]
+    let arrayIndex = Math.floor(Math.random()*fontArray.length);
+    
+    return "\"" + fontArray[arrayIndex] + "\"";
+  }
+  
+  function getFeelings(){
+    let arrayIndex = Math.floor(Math.random()*feelings.length);
+    document.getElementById("output").style.fontSize = this.randomNumber(.1,1.5).toString() + 'em';
+    document.getElementById('output').innerHTML = "<p'>My name is Tristen and " + feelings[arrayIndex] + "</p>";
+    document.getElementById('counter').innerHTML = this.largeRandomString();
+  }
+  function emotionallyUnstable(min = 10, max = 40){
+    if((window.matchMedia('(max-aspect-ratio: 1/1)').matches) && !interval){
+      interval = true;
+      const thisInterval = setInterval(function () { this.getFeelings(); }, 50);
+    }
+  }
+  
+  console.log("we really had some fun today eh? you got to move the mouse around, change some text, heck there was even some numbers changing on the screen! (what was that all about...)")
+  console.log("to learn more, goto https://hmpg.net")
+  
+  setInterval(function () { document.getElementById('counter').innerHTML = this.largeRandomString(); }, 10);
+  this.getFeelings();
+  this.emotionallyUnstable();
+  addEventListener('mousemove', (event) => {
+    this.getFeelings()
+    this.emotionallyUnstable(500, 5000);
+  });
+  
+    setTimeout(function() {
+      if (document.referrer === 'https://chia.neocities.org/'){
+      var newLine = "\r\n"
+      var msg = "   you  🤝  me"
+      msg += newLine;
+      msg += "internet & chia seeds";
+      alert(msg)
+    }
+  }, 100);
+
+  
+  
+</script>

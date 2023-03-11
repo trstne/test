@@ -1,0 +1,154 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Friends</title>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+</head>
+<body>
+  <div class="content">
+    <div id="friends"></div>
+  </div>
+
+</body>
+</html>
+
+<script>
+
+function shuffle(array) {
+  let currentIndex = array.length,  randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex != 0) {
+
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
+}
+
+function randomColor(){
+  const randomBetween = (min, max) => min + Math.floor(Math.random() * (max - min + 1));
+  const r = randomBetween(0, 255);
+  const g = randomBetween(0, 255);
+  const b = randomBetween(0, 255);
+  return `rgb(${r},${g},${b})`;
+}
+
+var data = [
+  {"name": "david" , "image": "/img/david.jpg"},
+  {"name": "angie" , "image": "/img/angie.jpg"},
+  {"name": "matthew" , "image": "/img/matthew.jpg"},
+  {"name": "pranj" , "image": "/img/pranj.jpg"},
+  {"name": "chia" , "image": "/img/chia.jpg"},
+  {"name": "tommy" , "image": "/img/tommy.jpg"},
+  {"name": "the oaks" , "image": "/img/oaks.jpg"},
+  {"name": "prateek" , "image": "/img/prateek.jpg"},
+  {"name": "tharun" , "image": "/img/tharun.jpg"},
+  {"name": "adrianna" , "image": "/img/adrianna.jpg"},
+  {"name": "tim" , "image": "/img/tim.jpg"},
+];
+
+let inner = '';
+data = this.shuffle(data);
+for (let friend of data){
+  let text = "<div class='text' id='text'>" + friend.name + "<img src='" + friend.image + "' class='tooltip'></img></div>";
+  inner += text;
+}
+document.getElementById('friends').innerHTML = inner;
+
+var tooltips = document.getElementsByClassName("tooltip");
+
+const names = document.getElementsByClassName("text");
+for (let item of names) {
+  item.style.color = randomColor();
+}
+let i = 0
+window.onmousemove = function (e) {
+    i += 1;
+    var x = e.clientX,
+        y = e.clientY;
+    for (let tooltip of tooltips) {
+      tooltip.style.top = (y) + 'px';
+      tooltip.style.left = (x) + 'px';
+    }
+    if ((i % 10) == 0){
+      for (let item of names) {
+        item.style.color =  randomColor();
+      }
+    }
+};
+
+</script>
+
+
+
+<style>
+  body { margin: 0; padding: 0; background-color:rgba(25, 25, 25);}
+  
+  @font-face {
+    font-family: 'cabin';
+    src:url("cabin.otf");
+}
+  
+  .content{ position: absolute;
+  left: 0;
+  right: 0;
+  background-color:rgba(25, 25, 25, 0.95);
+  z-index: 100;
+  padding: 0;
+  color: #333;
+  font-family: Helvetica, sans-serif;
+  overflow-y: scroll;
+  min-height: 100vh;
+  }
+  
+  .text {
+    font-family: "cabin";
+    width: fit-content;
+    font-size: 2.5em;
+    margin: 10px;
+    height: fit-content;
+  }
+  
+  #text:hover .tooltip {
+    display: block;
+  }
+  
+  #text:active .tooltip {
+    display: block;
+  }
+  
+  img{
+    max-width: 50vw;
+    max-height: 50vh;
+  }
+  
+  #friends{
+    display: flex;
+    max-width: 50vw;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0;
+  }
+
+  .tooltip {
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      display: none;
+      margin-left: 28px;
+      padding: 10px;
+      position: absolute;
+      z-index: 1000;
+      /*width:200px;*/
+      /*height:100px;*/
+  }
+  
+
+</style>

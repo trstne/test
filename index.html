@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>*& ._> -}____| { { i . i }} ☺︎</title>
+    <link rel="shortcut icon" type="image/jpg" href="favicon-16x16.png"/>
+  </head>
+  <body>
+  <p id="cont">♡ you
+  </p>
+  <p id="output"></p>
+  <p id="counter"></p>
+  </body>
+</html>
+
+<style>
+  #cont{
+    display: block;
+    position: static;
+    top: 0;
+    left: 0;
+    color: #444;
+    z-index: 10;
+    padding: 20px;
+    font-family: Helvetica;
+  }
+  p{
+    margin: 0;
+  }
+  body{
+    padding: 0;
+    margin: 0; 
+    height: 100vh; 
+    width: 100vw; 
+    overflow: hidden;
+    background: #222;
+    color: #e1e1e1;
+    /*max-height: 100vh;*/
+    /*place-items: center;*/
+    /*display: grid; */
+    /*grid-template-columns: 5fr 1fr; */
+    /*grid-template-rows: 1fr; */
+    /*grid-column-gap: 0px;*/
+    /*grid-row-gap: 0px; */
+  }
+  /*#ifeellike{*/
+  /*  font-size: .5em;*/
+  /*  color: #222222;*/
+  /*  position: absolute;*/
+  /*  bottom: 10px*/
+  /*  left: 10px;*/
+  /*  z-index: 3;*/
+  /*}*/
+  #output{
+    max-height: 100vh;
+    height: 85vh; 
+    display: grid;
+    place-items: center;
+    /*grid-area: 1 / 1 / 2 / 2;*/
+  }
+  #counter{
+    /*margin: 0;*/
+    /*border-left: solid white 1px;*/
+    /*padding-left: 3px;*/
+    /*max-height: 100vh;*/
+    /*grid-area: 1 / 2 / 2 / 3;*/
+    /*font-size: .1em;*/
+    /*width:100%;*/
+    /*word-break: break-all;*/
+    /*overflow: hidden;*/
+    /*background: #333;*/
+    display:none;
+  }
+  @media (min-aspect-ratio: 1/1) {
+    #output{
+      height: 100vh; 
+    }
+  }
+
+  
+  }
+</style>
+
+<script>
+    // to inspect element and read the text of this array outside of its context breaks all the romance of the initial form
+  let feelings = [
+  {src: "indexedcolor/1.png", desc: "Kindergarten Class Photo" },
+  {src: "indexedcolor/2.png", desc: "Tommy"},
+  {src: "indexedcolor/3.png", desc: "Rudra"},
+  {src: "indexedcolor/4.png", desc: "Angie"},
+  {src: "indexedcolor/5.png", desc: "Graduation" },
+  {src: "indexedcolor/6.png", desc: "Nikhil"},
+  {src: "indexedcolor/7.png", desc: "Tharun & Vinu"},
+  {src: "indexedcolor/8.png", desc: "uptii"},
+  {src: "indexedcolor/9.png", desc: "Pranj" },
+  {src: "indexedcolor/10.png", desc: "Prateek"},
+  {src: "indexedcolor/11.png", desc: "Hailey"},
+  {src: "indexedcolor/12.png", desc: "Roxanna"},
+  {src: "indexedcolor/13.png", desc: "Nanii" },
+  {src: "indexedcolor/14.png", desc: "Taylore"},
+  {src: "indexedcolor/15.png", desc: "Darwin"},
+  {src: "indexedcolor/16.png", desc: "Professional Sled Pullers"},
+  {src: "indexedcolor/17.png", desc: "Family Thanksgiving" },
+  {src: "indexedcolor/18.png", desc: "Dad & Mom"},
+  {src: "indexedcolor/19.png", desc: "Adrianna"},
+  {src: "indexedcolor/20.png", desc: "Professor Carmona"},
+  {src: "indexedcolor/21.png", desc: "Chia" },
+  {src: "indexedcolor/22.png", desc: "<a=href'dontlistento.this'>dontlistento.this</a>"},
+  {src: "indexedcolor/23.png", desc: "42 Puddin Lane"},
+  {src: "indexedcolor/24.png", desc: "Dante & Ashmita"},
+  {src: "indexedcolor/25.png", desc: "Assad" },
+  {src: "indexedcolor/26.png", desc: "Grandfather Lawrence's 60th"},
+  {src: "indexedcolor/27.png", desc: "<a href='https://www.legacy.com/us/obituaries/hartfordcourant/name/gracie-wall-obituary?id=25361839'>Gracie Ann Wall (2001 - 2007)</a>"},
+  {src: "indexedcolor/28.png", desc: "Grandma Lawrence"},
+  {src: "indexedcolor/29.png", desc: "Grandma Edwards" },
+  {src: "indexedcolor/30.png", desc: "Darell"}
+  
+  ];
+  
+  // yeah alright ok 😔
+
+  
+  function randomNumber(min, max) { 
+    return Math.random() * (max - min) + min;
+  }
+  
+  let interval = false;
+  
+  function largeRandomString(n = 1000){
+    if(window.matchMedia('(max-aspect-ratio: 1/1)').matches){
+      n = 250
+    }
+    let string = ''
+    for (let i = 0; i < n; i++){
+      string += Math.random().toString(36).substring(2)
+    }
+    return string;
+  }
+  
+  // function randomFont() {
+  //   fontArray = ['Helvetica', 'Arial', 'Verdana', 'Tahoma', 'Trebuchet MS', 'Impact', "Gill Sans", "Times New Roman", "Georgia", "Palatino", "Baskerville", "Andalé Mono", "Courier", "Lucida", "Monaco", "Bradley Hand", "Brush Script MT", "Luminari", "Comic Sans MS"
+  //     ]
+  //   let arrayIndex = Math.floor(Math.random()*fontArray.length);
+    
+  //   return "\"" + fontArray[arrayIndex] + "\"";
+  // }
+  
+  let lastfive = [];
+  
+  function getFeelings(){
+    console.log(lastfive);
+    let arrayIndex = Math.floor(Math.random()*feelings.length);
+    while (lastfive.includes(arrayIndex)) {
+      arrayIndex = Math.floor(Math.random()*feelings.length);
+    }
+    lastfive.unshift(arrayIndex);
+    if (lastfive.length > 20) lastfive.pop();
+    
+    console.log(feelings[arrayIndex].src);
+    console.log(feelings[arrayIndex].desc);
+    
+    let i = 0;
+    
+    addEventListener("click", (event) => {
+      i = i + 1;
+      console.log(i);
+    });
+    
+  
+    //document.getElementById("output").style.fontSize = this.randomNumber(.1,1.5).toString() + 'em';
+    document.getElementById('output').innerHTML = "<p><img style='max-width:100vw; object-fit: contain;' src='" + feelings[arrayIndex].src + "'></img></p><p>";
+    document.getElementById('cont').innerHTML = "<p>" + feelings[arrayIndex].desc + "</p>";
+  }
+  function emotionallyUnstable(min = 10, max = 40){
+    //if((window.matchMedia('(max-aspect-ratio: 1/1)').matches) && !interval){
+      interval = true;
+      const thisInterval = setInterval(function () { this.getFeelings(); }, 200);
+    //}
+  }
+  
+  console.log("we really had some fun today eh? you got to move the mouse around, change some text, heck there was even some numbers changing on the screen! (what was that all about...)")
+  console.log("to learn more, goto https://hmpg.net")
+  
+  setInterval(function () { document.getElementById('counter').innerHTML = this.largeRandomString(); }, 10);
+  this.getFeelings();
+  this.emotionallyUnstable();
+  // addEventListener('mousemove', (event) => {
+  //   this.getFeelings()
+  //   this.emotionallyUnstable(500, 5000);
+  // });
+  
+    setTimeout(function() {
+      if (document.referrer === 'https://chia.neocities.org/'){
+      var newLine = "\r\n"
+      var msg = "   you  🤝  me"
+      msg += newLine;
+      msg += "internet & chia seeds";
+      alert(msg)
+    }
+  }, 100);
+  
+  dragElement(document.getElementById("output"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    // if present, the header is where you move the DIV from:
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    // otherwise, move the DIV from anywhere inside the DIV:
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    // stop moving when mouse button is released:
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+
+  
+  
+</script>
